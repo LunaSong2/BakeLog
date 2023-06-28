@@ -10,12 +10,14 @@ class IngredientList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       shrinkWrap: true,
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.only(top:5.0),
       itemCount: recipe.ingredients.length,
-      itemBuilder: (BuildContext context, int index) {
-        return IngredientWidget(ingredient: recipe.ingredients[index]);
+      separatorBuilder: (context, index) => const Divider(
+        color: Colors.grey, height: 1.0),
+      itemBuilder: (context, index) {
+        return IngredientView(ingredient: recipe.ingredients[index]);
       },
     );
   }
@@ -50,17 +52,18 @@ class LogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
         shrinkWrap: true,
-        padding: const EdgeInsets.all(1.0),
+        padding: const EdgeInsets.all(5.0),
         itemCount: recipe.bakeLog.length,
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            leading: Icon(Icons.bus_alert_rounded),
-            title: Text('${recipe.bakeLog[index].name}'),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => LogPage(bakelog: recipe.bakeLog[index])));
-            },
-          );
+          return Card(
+            child: ListTile(
+              leading: Icon(Icons.bus_alert_rounded),
+              title: Text('${recipe.bakeLog[index].name}'),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => LogPage(bakelog: recipe.bakeLog[index])));
+              },
+            ));
         });
   }
 }
@@ -86,19 +89,19 @@ class _RecipePageState extends State<RecipePage> {
     return Scaffold(
       appBar: AppBar(
           title: Text(widget.recipe.recipeName),
-          backgroundColor: Colors.green),
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer),
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Ingredients', style: Theme.of(context).textTheme.headlineSmall),
+            Text('Ingredients', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
             Flexible(child: IngredientList(recipe: widget.recipe)),
-            Divider(),
-            Text('How to', style: Theme.of(context).textTheme.headlineSmall),
+            Divider(height:20, thickness: 10, color: Theme.of(context).colorScheme.primaryContainer),
+            Text('How to', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
             Flexible(child: HowToList(recipe: widget.recipe)),
-            Divider(),
-            Text('Baking Log', style: Theme.of(context).textTheme.headlineSmall),
+            Divider(height:20, thickness: 10, color: Theme.of(context).colorScheme.primaryContainer),
+            Text('Bake Log', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
             Flexible(child: LogList(recipe: widget.recipe)),
           ],
         )

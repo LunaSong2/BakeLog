@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:bakinglog/page_home.dart';
 import 'package:bakinglog/data.dart';
 import 'package:bakinglog/color_schemes.g.dart';
+import 'package:bakinglog/typography.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +19,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      //darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          textTheme: textTheme,
+      ),
+      darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: darkColorScheme,
+        textTheme: textTheme,
+      ),
+      themeMode: ThemeMode.light,
       home: RecipeBuilder(),
     );
   }

@@ -15,11 +15,29 @@
           "name": "water",
           "unit": "g",
           "amount": "100"
+        },
+        {
+          "name": "flour",
+          "unit": "g",
+          "amount": "500"
+        },
+        {
+          "name": "salt",
+          "unit": "g",
+          "amount": "1"
+        },
+        {
+          "name": "yeast",
+          "unit": "g",
+          "amount": "5"
         }
       ],
       "how_to": [
-        "add water",
-        "add heat"
+        "재료를 모두 섞어서 덩어리로 만든다.",
+        "40분간 40도에서 1차 발효",
+        "가스를 빼고 100g씩 분할 후 도넛 모양 만들기",
+        "끊는 물에 앞/뒷면 10초씩 데치기",
+        "오븐 190도 20분 굽기"
       ],
       "bake_log": [
         {

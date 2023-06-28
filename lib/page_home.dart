@@ -42,7 +42,7 @@ class _RecipeListState extends State<RecipeList> {
       appBar: AppBar(
         title: Text('Baking Log',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white),),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         actions: [
           IconButton(
             icon: const Icon(Icons.add, color: Colors.white),
