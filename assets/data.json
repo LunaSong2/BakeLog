@@ -1,0 +1,64 @@
+{
+  "user": "luna",
+  "recipes": [
+      {
+      "recipe_name": "bagel",
+      "date_created": 20230623,
+      "date_modified": 20230623,
+      "ingredients": [
+        {
+        "name": "egg",
+        "unit": "EA",
+        "amount": "1"
+        },
+        {
+          "name": "water",
+          "unit": "g",
+          "amount": "100"
+        }
+      ],
+      "how_to": [
+        "add water",
+        "add heat"
+      ],
+      "bake_log": [
+        {
+          "name": "첫번째",
+          "score": 5,
+          "image_url": "1.png",
+          "date": 20230623
+        },
+        {
+          "name": "두번째",
+          "score": 0,
+          "image_url": "2.png",
+          "date": 20230623
+        }
+      ]
+    },
+    {
+      "recipe_name": "마들렌",
+      "date_created": 20230623,
+      "date_modified": 20230623,
+      "ingredients": [
+        {
+          "name": "butter",
+          "unit": "g",
+          "amount": "50"
+        },
+        {
+          "name": "flour",
+          "unit": "g",
+          "amount": "100"
+        }
+      ],
+      "how_to": [
+        "add water",
+        "add heat"
+      ],
+      "bake_log": [
+
+      ]
+    }
+  ]
+}
