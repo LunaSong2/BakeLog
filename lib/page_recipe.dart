@@ -13,11 +13,11 @@ class IngredientList extends StatefulWidget {
 
 class _IngredientListState extends State<IngredientList> {
   double amountRatio = 1.0;
-  bool refreshFlag = false;
 
-  void refreshChildren(double amountRatio) {
+  void refreshChildren(double ratio) {
     setState(() {
-      refreshFlag = !refreshFlag;
+      amountRatio = ratio;
+      print("AmountRatio : $amountRatio");
     });
   }
 
@@ -31,7 +31,7 @@ class _IngredientListState extends State<IngredientList> {
         separatorBuilder: (context, index) => const Divider(
           color: Colors.grey, height: 1.0),
         itemBuilder: (context, index) {
-          return IngredientView(ingredient: widget.recipe.ingredients[index], refreshCallback: refreshChildren,);
+          return IngredientView(ingredient: widget.recipe.ingredients[index], amountRatio: amountRatio, refreshCallback: refreshChildren,);
         },
     );
   }
