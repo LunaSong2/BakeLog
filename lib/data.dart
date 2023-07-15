@@ -24,7 +24,7 @@ class Recipe {
   int dateCreated = 0;
   int dateModified = 0;
   List<Ingredient> ingredients = [];
-  List<String> howTo = [];
+  List<String> howTo = [""];
   List<BakeLog> bakeLog = [];
 
   Recipe({

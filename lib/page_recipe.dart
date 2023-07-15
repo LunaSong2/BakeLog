@@ -22,17 +22,32 @@ class _IngredientListState extends State<IngredientList> {
     });
   }
 
+  void addNewIngredient() {
+    setState(() {
+      widget.recipe.ingredients.add(Ingredient(name:"", unit:"g", amount:"0"));
+    });
+  }
+
+  void deleteIngredient(Object obj) {
+    setState(() {
+      widget.recipe.ingredients.remove(obj);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.only(top:5.0),
-        itemCount: widget.recipe.ingredients.length,
+        itemCount: widget.recipe.ingredients.length + (widget.isEdit? 1 : 0),
         separatorBuilder: (context, index) => const Divider(
           color: Colors.grey, height: 1.0),
         itemBuilder: (context, index) {
-          return IngredientView(isEdit: widget.isEdit, ingredient: widget.recipe.ingredients[index], amountRatio: amountRatio, refreshCallback: refreshChildren,);
+          return (index == widget.recipe.ingredients.length)?
+              IconButton(icon: const Icon(Icons.add), onPressed:(){ addNewIngredient(); })
+              : IngredientView(isEdit: widget.isEdit, ingredient: widget.recipe.ingredients[index],
+            amountRatio: amountRatio, refreshCallback: refreshChildren, deleteCallback: deleteIngredient,);
         },
     );
   }
@@ -114,8 +129,9 @@ class LogList extends StatelessWidget {
 
 
 class RecipePage extends StatefulWidget {
-  const RecipePage({required this.recipe, super.key});
+  const RecipePage({required this.recipe, this.isEdit = false, super.key});
   final Recipe recipe;
+  final bool isEdit;
 
   @override
   State<RecipePage> createState() => _RecipePageState();
@@ -123,6 +139,14 @@ class RecipePage extends StatefulWidget {
 
 class _RecipePageState extends State<RecipePage> {
   bool isEdit = false;
+  TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    isEdit = widget.isEdit;
+    textEditingController.text = widget.recipe.recipeName;
+  }
 
   void turnEditMode() {
     setState(() {
@@ -139,9 +163,13 @@ class _RecipePageState extends State<RecipePage> {
             IconButton(
             icon: isEdit ? const Icon(Icons.done) : const Icon(Icons.edit),
             onPressed: () {turnEditMode();}),
-            IconButton(icon: const Icon(Icons.delete), onPressed: (){}),
           ],
-        title: Text(widget.recipe.recipeName),
+        title: isEdit ? TextField(
+          controller: textEditingController,
+          onChanged: (value) {
+            widget.recipe.recipeName = value;
+          }, )
+          : Text(widget.recipe.recipeName),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer),
       body: SingleChildScrollView(
         child: Padding(

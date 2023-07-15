@@ -145,11 +145,13 @@ class _IngredientTextFieldState extends State<IngredientTextField> {
 }
 
 class IngredientView extends StatelessWidget {
-  IngredientView({required this.isEdit, required this.ingredient, required this.amountRatio, required this.refreshCallback}) : super(key: ObjectKey(ingredient));
+  IngredientView({required this.isEdit, required this.ingredient, required this.amountRatio,
+    required this.refreshCallback, required this.deleteCallback}) : super(key: ObjectKey(ingredient));
 
   final bool isEdit;
   final Ingredient ingredient;
   final Function(double) refreshCallback;
+  final Function(Object) deleteCallback;
   final double amountRatio;
 
   @override
@@ -182,7 +184,8 @@ class IngredientView extends StatelessWidget {
           type: 2,
           style: Theme.of(context).textTheme.bodyLarge,
           alignment: Alignment.centerLeft),
-        isEdit ? Container() : AmountChanger(amount: double.parse(ingredient.amount), amountRatio: amountRatio, refreshCallback: refreshCallback,),
+        isEdit ? Container(width: 30, height:30, child: IconButton(icon: const Icon(Icons.remove), onPressed:(){ deleteCallback(ingredient);}))
+            : AmountChanger(amount: double.parse(ingredient.amount), amountRatio: amountRatio, refreshCallback: refreshCallback,),
       ],
     );
   }
