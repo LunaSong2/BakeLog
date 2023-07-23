@@ -158,17 +158,15 @@ class IngredientView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(alignment: Alignment.center,
-          width: 30, height: 30,
-          child: const Icon(Icons.arrow_right),
-        ),
+        const SizedBox(width: 30, height: 30),
         IngredientTextField(
           isEdit: isEdit,
-          width: 100,
+          width: 150,
           ingredient: ingredient,
           type: 0, //todo replace enum
           style: Theme.of(context).textTheme.bodyLarge,
           alignment: Alignment.centerLeft),
+        const SizedBox(width: 10, height:30),
         IngredientTextField(
           isEdit: isEdit,
           width: 50,
@@ -176,7 +174,7 @@ class IngredientView extends StatelessWidget {
           type: 1,
           style: Theme.of(context).textTheme.titleLarge,
           alignment: Alignment.centerRight),
-        Container(width: 10, height:30),
+        const SizedBox(width: 10, height:30),
         IngredientTextField(
           isEdit: isEdit,
           width: 50,

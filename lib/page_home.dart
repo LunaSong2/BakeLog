@@ -46,7 +46,7 @@ class _RecipeListState extends State<RecipeList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Baking Log v0.1',
+        title: Text('Baking Log v0.2',
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(color: Colors.white),),
         backgroundColor: Theme.of(context).colorScheme.primary,
         actions: [

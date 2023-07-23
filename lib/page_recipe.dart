@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:bakinglog/page_log.dart';
 import 'package:bakinglog/data.dart';
@@ -102,31 +103,66 @@ class _HowToListState extends State<HowToList> {
   }
 }
 
-class LogList extends StatelessWidget {
-  LogList({required this.recipe}) : super(key: ObjectKey(recipe));
+class LogList extends StatefulWidget {
+  LogList({required this.recipe, required this.isEdit}) : super(key: ObjectKey(recipe));
 
   final Recipe recipe;
+  final bool isEdit;
+
+  @override
+  _LogListState createState() => _LogListState();
+}
+
+class _LogListState extends State<LogList> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void refreshChildren() {
+    setState(() {
+    });
+  }
+
+  void addNewLog() {
+    setState(() {
+      widget.recipe.bakeLog.add(BakeLog(name: " ", score: 5, imageUrl: "", date: 0));
+    });
+  }
+
+  void deleteLog(Object obj) {
+    setState(() {
+      widget.recipe.bakeLog.remove(obj);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(5.0),
-        itemCount: recipe.bakeLog.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ListTile(
-              leading: Icon(Icons.bus_alert_rounded),
-              title: Text('${recipe.bakeLog[index].name}'),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => LogPage(bakelog: recipe.bakeLog[index])));
-              },
-            ));
-        });
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      padding: const EdgeInsets.all(5.0),
+      itemCount: widget.recipe.bakeLog.length + (widget.isEdit ? 0 : 1),
+      itemBuilder: (BuildContext context, int index) {
+        return (index == widget.recipe.bakeLog.length) ? Card (
+            child: IconButton(icon: const Icon(Icons.add), onPressed:() {
+              addNewLog();
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => LogPage(bakelog: widget.recipe.bakeLog[index]))).then((_)=>refreshChildren());
+            }))
+        : Card(
+          child: ListTile(
+            leading: Icon(Icons.cookie_outlined),
+            title: Text('${widget.recipe.bakeLog[index].name}'),
+            subtitle: Text('${widget.recipe.bakeLog[index].date}'),
+            trailing: widget.isEdit? IconButton(icon: const Icon(Icons.remove), onPressed: (){ deleteLog(widget.recipe.bakeLog[index]);}) : null,
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => LogPage(bakelog: widget.recipe.bakeLog[index]))).then((_)=>refreshChildren());}
+        ));
+      });
   }
 }
-
 
 class RecipePage extends StatefulWidget {
   const RecipePage({required this.recipe, this.isEdit = false, super.key});
@@ -183,10 +219,10 @@ class _RecipePageState extends State<RecipePage> {
               Divider(height:20, thickness: 20, color: Theme.of(context).colorScheme.primaryContainer),
               Divider(height:5, thickness: 0, color: Colors.transparent),
               Text('  How to', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
-              Container(child: HowToList(recipe: widget.recipe, isEdit: isEdit,)),
+              Container(child: HowToList(recipe: widget.recipe, isEdit: isEdit,), padding: EdgeInsets.all(10),),
               Divider(height:30, thickness: 20, color: Theme.of(context).colorScheme.primaryContainer),
               Text('  Bake Log', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
-              Container(child: LogList(recipe: widget.recipe)),
+              Container(child: LogList(recipe: widget.recipe, isEdit: isEdit)),
             ],
           )
         )
