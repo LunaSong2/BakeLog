@@ -70,9 +70,16 @@ class _RecipeBuilderState extends State<RecipeBuilder> with WidgetsBindingObserv
     print('displayName: ' + (user?.displayName ?? 'null'));
     _showOnboardingIfNeeded();
     _initAppVersion();
+    // 앱 시작 시점에 currentUser가 null이면 익명 로그인 시도
+    if (FirebaseAuth.instance.currentUser == null) {
+      FirebaseAuth.instance.signInAnonymously();
+    }
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user != null) {
+        print('로그인 완료: ${user.uid}');
         loadRecipeData();
+      } else {
+        print('아직 로그인되지 않음');
       }
     });
   }
@@ -275,7 +282,7 @@ class _RecipeBuilderState extends State<RecipeBuilder> with WidgetsBindingObserv
     setState(() {
       appVersion = info.version;
     });
-    await loadRecipeData();
+    // loadRecipeData()는 인증 완료 후에만 호출
   }
 
   @override

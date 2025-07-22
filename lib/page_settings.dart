@@ -36,9 +36,14 @@ class _SettingsPageState extends State<SettingsPage> {
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        _showSimpleDialog('계정 연동 실패', '로그인이 되어 있지 않습니다. 잠시 후 다시 시도해 주세요.');
+        return;
+      }
       UserCredential userCredential;
       try {
-        userCredential = await FirebaseAuth.instance.currentUser!.linkWithCredential(credential);
+        userCredential = await user.linkWithCredential(credential);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'credential-already-in-use') {
           userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
@@ -51,10 +56,10 @@ class _SettingsPageState extends State<SettingsPage> {
       if (cloudData != null) {
         widget.onUserDataChanged(cloudData);
         widget.onSyncFromCloud?.call();
-        _showSimpleDialog('동기화 완료', '계정에 저장된 데이터를 불러왔습니다.');
+        _showSimpleDialog('동기화 완료', '서버에서 데이터를 가져왔습니다.');
       } else {
         await uploadUserDataToFirestore(widget.userData);
-        _showSimpleDialog('동기화 완료', '현재 데이터를 계정에 업로드했습니다.');
+        _showSimpleDialog('동기화 완료', '계정이 새로 등록되어 이제부터 서버로 동기화합니다.');
       }
       setState(() {});
     } catch (e) {
@@ -97,9 +102,14 @@ class _SettingsPageState extends State<SettingsPage> {
     if (result != true || email.isEmpty || password.isEmpty) return;
     try {
       final credential = EmailAuthProvider.credential(email: email, password: password);
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        _showSimpleDialog('계정 연동 실패', '로그인이 되어 있지 않습니다. 잠시 후 다시 시도해 주세요.');
+        return;
+      }
       UserCredential userCredential;
       try {
-        userCredential = await FirebaseAuth.instance.currentUser!.linkWithCredential(credential);
+        userCredential = await user.linkWithCredential(credential);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'credential-already-in-use') {
           userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
@@ -115,10 +125,10 @@ class _SettingsPageState extends State<SettingsPage> {
       if (cloudData != null) {
         widget.onUserDataChanged(cloudData);
         widget.onSyncFromCloud?.call();
-        _showSimpleDialog('동기화 완료', '계정에 저장된 데이터를 불러왔습니다.');
+        _showSimpleDialog('동기화 완료', '서버에서 데이터를 가져왔습니다.');
       } else {
         await uploadUserDataToFirestore(widget.userData);
-        _showSimpleDialog('동기화 완료', '현재 데이터를 계정에 업로드했습니다.');
+        _showSimpleDialog('동기화 완료', '계정이 새로 등록되어 이제부터 서버로 동기화합니다.');
       }
       setState(() {});
     } catch (e) {
