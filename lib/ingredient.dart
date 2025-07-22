@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:bakinglog/page_log.dart';
 import 'package:bakinglog/data.dart';
 
 class AmountChanger extends StatefulWidget {
-  AmountChanger({required this.amount, required this.amountRatio, required this.refreshCallback, super.key});
+  const AmountChanger({required this.amount, required this.amountRatio, required this.refreshCallback, super.key});
   final double amount;
   final double amountRatio;
   final Function(double) refreshCallback;
@@ -63,7 +62,7 @@ class _AmountChangerState extends State<AmountChanger> {
         width: 60, height: 30,
         color: Theme.of(context).colorScheme.tertiaryContainer,
         alignment: Alignment.centerRight,
-        padding: EdgeInsets.only(left:5, right:5),
+        padding: const EdgeInsets.only(left:5, right:5),
         child: _isEditing ? TextFormField(
           controller: _textEditingController,
           autofocus: true,
@@ -87,7 +86,7 @@ class _AmountChangerState extends State<AmountChanger> {
 }
 
 class IngredientTextField extends StatefulWidget {
-  IngredientTextField({required this.isEdit, required this.width, required this.ingredient, required this.type, required this.style, required this.alignment, super.key});
+  const IngredientTextField({required this.isEdit, required this.width, required this.ingredient, required this.type, required this.style, required this.alignment, super.key});
 
   final bool isEdit;
   final double width;
@@ -130,7 +129,7 @@ class _IngredientTextFieldState extends State<IngredientTextField> {
             if (widget.type == 0) {
               widget.ingredient.name = value;
             } else if (widget.type == 1) {
-              widget.ingredient.amount = value;
+              widget.ingredient.amount = value != '' ? value : '0';
             } else {
               widget.ingredient.unit = value;
             }
@@ -182,7 +181,7 @@ class IngredientView extends StatelessWidget {
           type: 2,
           style: Theme.of(context).textTheme.bodyLarge,
           alignment: Alignment.centerLeft),
-        isEdit ? Container(width: 30, height:30, child: IconButton(icon: const Icon(Icons.remove), onPressed:(){ deleteCallback(ingredient);}))
+        isEdit ? SizedBox(width: 30, height:30, child: IconButton(icon: const Icon(Icons.remove), onPressed:(){ deleteCallback(ingredient);}))
             : AmountChanger(amount: double.parse(ingredient.amount), amountRatio: amountRatio, refreshCallback: refreshCallback,),
       ],
     );

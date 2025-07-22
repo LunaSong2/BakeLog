@@ -1,11 +1,10 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:bakinglog/page_log.dart';
 import 'package:bakinglog/data.dart';
 import 'package:bakinglog/ingredient.dart';
 
 class IngredientList extends StatefulWidget {
-  IngredientList({required this.recipe, required this.isEdit, super.key});
+  const IngredientList({required this.recipe, required this.isEdit, super.key});
   final Recipe recipe;
   final bool isEdit;
 
@@ -39,7 +38,7 @@ class _IngredientListState extends State<IngredientList> {
   Widget build(BuildContext context) {
     return ListView.separated(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.only(top:5.0),
         itemCount: widget.recipe.ingredients.length + (widget.isEdit? 1 : 0),
         separatorBuilder: (context, index) => const Divider(
@@ -91,13 +90,13 @@ class _HowToListState extends State<HowToList> {
         ))
       : ListView.builder(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(0),
         itemCount: widget.recipe.howTo.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(alignment: Alignment.centerLeft,
           //height: 30,
-          child: Text('${widget.recipe.howTo[index]}'));
+          child: Text(widget.recipe.howTo[index]));
        },
     );
   }
@@ -126,7 +125,8 @@ class _LogListState extends State<LogList> {
 
   void addNewLog() {
     setState(() {
-      widget.recipe.bakeLog.add(BakeLog(name: " ", score: 5, imageUrl: "", date: 0));
+      widget.recipe.bakeLog.add(BakeLog(name: "${widget.recipe.recipeName} #${widget.recipe.bakeLog.length + 1}",
+          score: 5, imageUrl: "", date: DateTime.now().toString().substring(0,16), note:""),);
     });
   }
 
@@ -148,14 +148,16 @@ class _LogListState extends State<LogList> {
             child: IconButton(icon: const Icon(Icons.add), onPressed:() {
               addNewLog();
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => LogPage(bakelog: widget.recipe.bakeLog[index]))).then((_)=>refreshChildren());
+                  builder: (context) => LogPage(bakelog: widget.recipe.bakeLog[index], isEdit: true,))).then((_)=>refreshChildren());
             }))
         : Card(
           child: ListTile(
-            leading: Icon(Icons.cookie_outlined),
-            title: Text('${widget.recipe.bakeLog[index].name}'),
-            subtitle: Text('${widget.recipe.bakeLog[index].date}'),
-            trailing: widget.isEdit? IconButton(icon: const Icon(Icons.remove), onPressed: (){ deleteLog(widget.recipe.bakeLog[index]);}) : null,
+            leading: const Icon(Icons.cookie_outlined),
+
+            title: Text(widget.recipe.bakeLog[index].name),
+            subtitle: Text(widget.recipe.bakeLog[index].note),
+            trailing: widget.isEdit? IconButton(icon: const Icon(Icons.remove), onPressed: (){ deleteLog(widget.recipe.bakeLog[index]);})
+                : Text(widget.recipe.bakeLog[index].date),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) => LogPage(bakelog: widget.recipe.bakeLog[index]))).then((_)=>refreshChildren());}
@@ -209,17 +211,17 @@ class _RecipePageState extends State<RecipePage> {
         backgroundColor: Theme.of(context).colorScheme.primaryContainer),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(0.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Divider(height:10, thickness: 0, color: Colors.transparent),
+              const Divider(height:10, thickness: 0, color: Colors.transparent),
               Text('  Ingredients', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
               IngredientList(recipe: widget.recipe, isEdit: isEdit),
               Divider(height:20, thickness: 20, color: Theme.of(context).colorScheme.primaryContainer),
-              Divider(height:5, thickness: 0, color: Colors.transparent),
+              const Divider(height:5, thickness: 0, color: Colors.transparent),
               Text('  How to', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
-              Container(child: HowToList(recipe: widget.recipe, isEdit: isEdit,), padding: EdgeInsets.all(10),),
+              Container(padding: const EdgeInsets.all(10),child: HowToList(recipe: widget.recipe, isEdit: isEdit,),),
               Divider(height:30, thickness: 20, color: Theme.of(context).colorScheme.primaryContainer),
               Text('  Bake Log', style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Theme.of(context).colorScheme.primary)),
               Container(child: LogList(recipe: widget.recipe, isEdit: isEdit)),

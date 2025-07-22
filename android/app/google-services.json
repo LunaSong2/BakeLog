@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "636739073158",
+    "project_id": "bakelog-19532",
+    "storage_bucket": "bakelog-19532.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636739073158:android:cc4938abe2f20103ed4d07",
+        "android_client_info": {
+          "package_name": "com.luna.bakelog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636739073158-0cmh11ubasur56hr2rt8ql93ckh51rqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.luna.bakelog",
+            "certificate_hash": "dd5533136eef5e2d78bf5e1f68da9bf765bb50a5"
+          }
+        },
+        {
+          "client_id": "636739073158-7sev40h5ssdol6iv5onhvvcejciur8l0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI4OKE01YC5-5iwII4LJQuHBuiyoBUCmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636739073158-7sev40h5ssdol6iv5onhvvcejciur8l0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

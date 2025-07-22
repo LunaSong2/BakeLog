@@ -1,31 +1,40 @@
-class UserData {
-  String user;
-  List<Recipe> recipes;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:convert';
 
-  UserData({required this.user, required this.recipes});
+class UserData {
+  List<Recipe> recipes;
+  String appVersion;
+  int schemaVersion;
+
+  UserData({required this.recipes, required this.appVersion, this.schemaVersion = 1});
 
   factory UserData.fromJson(Map<String, dynamic> json) {
+    int version = json['schema_version'] ?? 1;
     return UserData(
-      user: json['user'],
       recipes: List<Recipe>.from(json['recipes'].map((recipe) => Recipe.fromJson(recipe))),
+      appVersion: json['app_version'] ?? 'unknown',
+      schemaVersion: version,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'user': user,
+      'schema_version': schemaVersion,
       'recipes': List<dynamic>.from(recipes.map((recipe) => recipe.toJson())),
+      'app_version': appVersion,
     };
   }
 }
 
 class Recipe {
   String recipeName = '';
-  int dateCreated = 0;
-  int dateModified = 0;
+  String dateCreated = '';
+  String dateModified = '';
   List<Ingredient> ingredients = [];
   List<String> howTo = [""];
   List<BakeLog> bakeLog = [];
+  bool isFavorite = false;
 
   Recipe({
     required this.recipeName,
@@ -34,9 +43,10 @@ class Recipe {
     required this.ingredients,
     required this.howTo,
     required this.bakeLog,
+    this.isFavorite = false,
   });
 
-  Recipe.withNameOnly(this.recipeName);
+  Recipe.createNew(this.recipeName, this.dateCreated);
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
     List<dynamic> jsonIngredients = json['ingredients'] ?? [];
@@ -55,6 +65,7 @@ class Recipe {
       ingredients: ingredients,
       howTo: howTo,
       bakeLog: bakeLog,
+      isFavorite: json['is_favorite'] ?? false,
     );
   }
 
@@ -70,6 +81,7 @@ class Recipe {
       'ingredients': jsonIngredients,
       'how_to': jsonHowTo,
       'bake_log': jsonBakeLog,
+      'is_favorite': isFavorite,
     };
   }
 }
@@ -107,13 +119,15 @@ class BakeLog {
   String name;
   int score;
   String imageUrl;
-  int date;
+  String date;
+  String note;
 
   BakeLog({
     required this.name,
     required this.score,
     required this.imageUrl,
     required this.date,
+    required this.note,
   });
 
   factory BakeLog.fromJson(Map<String, dynamic> json) {
@@ -122,6 +136,7 @@ class BakeLog {
       score: json['score'],
       imageUrl: json['image_url'],
       date: json['date'],
+      note: json['note'],
     );
   }
 
@@ -131,6 +146,27 @@ class BakeLog {
       'score': score,
       'image_url': imageUrl,
       'date': date,
+      'note' : note,
     };
   }
+}
+
+Future<void> uploadUserDataToFirestore(UserData userData) async {
+  final user = FirebaseAuth.instance.currentUser;
+  if (user == null) {
+    print('No user is currently signed in.');
+    return;
+  }
+  final uid = user.uid;
+  final jsonString = jsonEncode(userData.toJson());
+  await FirebaseFirestore.instance.collection('users').doc(uid).set({'data': jsonString});
+}
+
+Future<UserData?> downloadUserDataFromFirestore() async {
+  final uid = FirebaseAuth.instance.currentUser!.uid;
+  final doc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+  final data = doc.data();
+  if (data == null || data['data'] == null) return null;
+  final jsonData = jsonDecode(data['data']);
+  return UserData.fromJson(jsonData);
 }

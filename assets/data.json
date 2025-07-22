@@ -1,80 +1,465 @@
 {
-  "user": "luna",
+  "schema_version": 1,
   "recipes": [
-      {
-      "recipe_name": "bagel",
-      "date_created": 20230623,
-      "date_modified": 20230623,
+    {
+      "recipe_name": "사워도우",
+      "date_created": "2023-11-18 23:05",
+      "date_modified": "",
       "ingredients": [
         {
-        "name": "egg",
-        "unit": "EA",
-        "amount": "1"
+          "name": "밀가루",
+          "unit": "g",
+          "amount": "188"
         },
         {
-          "name": "water",
+          "name": "호밀가루",
+          "unit": "g",
+          "amount": "188"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "6"
+        },
+        {
+          "name": "물",
+          "unit": "g",
+          "amount": "360"
+        },
+        {
+          "name": "올리브오일",
+          "unit": "g",
+          "amount": "5"
+        },
+        {
+          "name": "드라이이스트",
+          "unit": "g",
+          "amount": "6"
+        }
+      ],
+      "how_to": [
+        "1. 실온의 물에 이스트 풀어넣기\n2. 밀가루, 호밀가루, 소금 섞고 가운데 구멍 낸 후 물+이스트 붓기\n3. 밀가루가 보이지 않을 정도로 뭉쳐지면 동그랗게 해서 반죽 2배 될때까지 실온 발효 (1.5~2시간)\n4. 테두리에서 중앙 방향으로 반죽 끌어모으기 (모든 테두리 돌아가면서) 그 후 2배 될때까지 실온 발효 \n5. 기름적신 휴지로 쓱 닦고 밀가루 뿌린 볼에 반죽 담고 1시간 발효\n6. 주물 냄비 230도 예열 \n7. 반죽 냄비에 넣고 230도에서 30분 굽고 뚜껑열고 15분 굽기\n\n* 다음번엔 물 줄이기"
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "젤리",
+      "date_created": "2023-11-19 21:50",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "젤라틴",
+          "unit": "g",
+          "amount": "27"
+        },
+        {
+          "name": "물",
+          "unit": "g",
+          "amount": "45"
+        },
+        {
+          "name": "레몬즙",
+          "unit": "g",
+          "amount": "30"
+        },
+        {
+          "name": "설탕",
+          "unit": "g",
+          "amount": "165"
+        },
+        {
+          "name": "물엿",
+          "unit": "g",
+          "amount": "45"
+        }
+      ],
+      "how_to": [
+        "1. 젤라틴 물에 불리기\n2. 나머지 재료 냄비에 담고 끓이기\n3. 불을 끄고 젤라틴 꼭 짜서 넣고 녹이기\n4. 틀에 붓고 1시간 냉장 보관\n5. 꺼내서 1,2일 말리기 (끈적임 없애기)"
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "슈톨렌(파운드)",
+      "date_created": "2023-12-16 17:21",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "건과일",
+          "unit": "g",
+          "amount": "60"
+        },
+        {
+          "name": "럼 (럼건과일용)",
+          "unit": "g",
+          "amount": "10"
+        },
+        {
+          "name": "버터",
+          "unit": "g",
+          "amount": "85"
+        },
+        {
+          "name": "설탕",
+          "unit": "g",
+          "amount": "75"
+        },
+        {
+          "name": "소금",
+          "unit": "꼬집",
+          "amount": "1"
+        },
+        {
+          "name": "아몬드가루",
+          "unit": "g",
+          "amount": "26"
+        },
+        {
+          "name": "달걀",
+          "unit": "개",
+          "amount": "1"
+        },
+        {
+          "name": "베이킹파우더",
+          "unit": "g",
+          "amount": "3"
+        },
+        {
+          "name": "시나몬가루",
+          "unit": "g",
+          "amount": "3"
+        },
+        {
+          "name": "피칸",
+          "unit": "g",
+          "amount": "15"
+        },
+        {
+          "name": "마지팬 아몬드가루",
+          "unit": "g",
+          "amount": "20"
+        },
+        {
+          "name": "마지팬 슈거파우더",
+          "unit": "g",
+          "amount": "20"
+        },
+        {
+          "name": "마지팬 흰자 ",
+          "unit": "g",
+          "amount": "4"
+        },
+        {
+          "name": "마지팬 럼",
+          "unit": "g",
+          "amount": "1.5"
+        },
+        {
+          "name": "시럽 물",
+          "unit": "g",
+          "amount": "24"
+        },
+        {
+          "name": "시럽 설탕",
+          "unit": "g",
+          "amount": "12"
+        },
+        {
+          "name": "시럽 럼",
+          "unit": "g",
+          "amount": "4"
+        },
+        {
+          "name": "슈거파우더",
+          "unit": "g",
+          "amount": "0"
+        },
+        {
+          "name": "박력분",
+          "unit": "g",
+          "amount": "70"
+        }
+      ],
+      "how_to": [
+        "* 마지팬 - 전부 섞어서 냉장 하루\n* 럼건과일 - 건과 작게 자른 후 럼 섞어서 한달?\n\n1. 가루들 체쳐두기\n2. 버터 녹이고 설탕 섞고 달걀 잘 섞기\n3. 가루 섞고 럼건과일 섞기\n4. 팬닝 - 마지팬 - 팬닝\n5. 오븐 170도 13분\n6. 완전히 식힌 후 시럽 바르고 슈거파우더 충분히 묻히기\n7. 숙성 후 먹기\n\n휘낭시에틀 10개 나옴"
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "마카롱",
+      "date_created": "2024-01-07 15:36",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "아몬드가루",
+          "unit": "g",
+          "amount": "55"
+        },
+        {
+          "name": "슈가파우더",
+          "unit": "g",
+          "amount": "55"
+        },
+        {
+          "name": "흰자",
+          "unit": "g",
+          "amount": "46"
+        },
+        {
+          "name": "설탕",
+          "unit": "g",
+          "amount": "46"
+        },
+        {
+          "name": "가나슈 초코",
+          "unit": "g",
+          "amount": "70"
+        },
+        {
+          "name": "가나슈 생크림",
+          "unit": "g",
+          "amount": "70"
+        },
+        {
+          "name": "가나슈 설탕",
+          "unit": "g",
+          "amount": "7"
+        },
+        {
+          "name": "가나슈 버터",
+          "unit": "g",
+          "amount": "15"
+        }
+      ],
+      "how_to": [
+        "1. 흰자 머랭 단단하게, 설탕 나눠넣기\n2. 아몬드가루 + 슈거파우더 체쳐넣기\n3. 마카로나주\n4. 짤주머니로 짜기 \n5. 오븐 50도 12분 말리기\n6. 150도 13분 굽고 2분 뒤 꺼내기\n7. 다 식으면 필링 채우고 다음날 먹기"
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "갈레트",
+      "date_created": "2024-01-27 15:40",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "버터",
           "unit": "g",
           "amount": "100"
         },
         {
-          "name": "flour",
+          "name": "슈가파우더",
           "unit": "g",
-          "amount": "500"
+          "amount": "55"
         },
         {
-          "name": "salt",
+          "name": "박력분",
+          "unit": "g",
+          "amount": "90"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "3"
+        },
+        {
+          "name": "베이킹파우더",
           "unit": "g",
           "amount": "1"
         },
         {
-          "name": "yeast",
+          "name": "아몬드가루",
           "unit": "g",
-          "amount": "5"
+          "amount": "55"
+        },
+        {
+          "name": "노른자",
+          "unit": "g",
+          "amount": "30"
+        },
+        {
+          "name": "다크럼",
+          "unit": "g",
+          "amount": "10"
+        },
+        {
+          "name": "바닐라에센스",
+          "unit": "방울",
+          "amount": "3"
+        },
+        {
+          "name": "노른자 바르기용",
+          "unit": "g",
+          "amount": "1"
         }
       ],
       "how_to": [
-        "재료를 모두 섞어서 덩어리로 만든다.",
-        "40분간 40도에서 1차 발효",
-        "가스를 빼고 100g씩 분할 후 도넛 모양 만들기",
-        "끊는 물에 앞/뒷면 10초씩 데치기",
-        "오븐 190도 20분 굽기"
+        "1. 6번까지 재료 믹서기로 섞고\n2. 액상재료 (노른자, 다크럼, 바닐라) 넣고 섞기\n3. 냉장 휴지 1시간\n4. 밀대로 1센치 두께로 밀고, 6센치 지름 틀로 찍기\n5. 노른자 얇게 바르고 냉장 10분 후 노른자 또 바르기\n6. 포크로 모양 내기\n7. 170도 예열, 160도로 25분 굽기"
       ],
-      "bake_log": [
-        {
-          "name": "첫번째",
-          "score": 5,
-          "image_url": "1.png",
-          "date": 20230623
-        },
-        {
-          "name": "두번째",
-          "score": 0,
-          "image_url": "2.png",
-          "date": 20230623
-        }
-      ]
+      "bake_log": []
     },
     {
-      "recipe_name": "마들렌",
-      "date_created": 20230623,
-      "date_modified": 20230623,
+      "recipe_name": "바게뜨(빵준서)",
+      "date_created": "2024-01-28 14:25",
+      "date_modified": "",
       "ingredients": [
         {
-          "name": "butter",
+          "name": "강력분",
+          "unit": "g",
+          "amount": "330"
+        },
+        {
+          "name": "중력분",
+          "unit": "g",
+          "amount": "330"
+        },
+        {
+          "name": "물",
+          "unit": "g",
+          "amount": "541"
+        },
+        {
+          "name": "몰트(or 꿀)",
+          "unit": "g",
+          "amount": "2"
+        },
+        {
+          "name": "이스트",
+          "unit": "g",
+          "amount": "3"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "12"
+        }
+      ],
+      "how_to": [
+        "1. 실온의 물에 이스트 완전히 섞기 (가능하면 10분 방치)\n2.소금, 몰트, 밀가루 섞고 손으로 쥐어짜듯이 30번 반죽\n3. 30분 후 쭉 늘이기 30번\n4. 30분 후 냉장보관 최소 12시간-최대 23시간\n5. 꺼내자마자 분할 후 10분 휴지\n6. 성형 후 20분 두기\n7. 오븐 최고온도로 굽기 (250도 13분?)\n(호밀 230 20분 괜찮았음)\n넣을 때 얼음 몇개 같이 넣고 중간에 또 스프레이 "
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "까눌레",
+      "date_created": "2024-02-17 13:39",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "우유",
+          "unit": "g",
+          "amount": "250"
+        },
+        {
+          "name": "설탕1",
+          "unit": "g",
+          "amount": "80"
+        },
+        {
+          "name": "설탕2",
+          "unit": "g",
+          "amount": "40"
+        },
+        {
+          "name": "중력분",
+          "unit": "g",
+          "amount": "62"
+        },
+        {
+          "name": "달걀노른자",
+          "unit": "g",
+          "amount": "30"
+        },
+        {
+          "name": "전란",
+          "unit": "g",
+          "amount": "20"
+        },
+        {
+          "name": "버터",
+          "unit": "g",
+          "amount": "25"
+        },
+        {
+          "name": "다크럼",
+          "unit": "g",
+          "amount": "27"
+        },
+        {
+          "name": "바닐라빈",
+          "unit": "g",
+          "amount": "3"
+        }
+      ],
+      "how_to": [
+        "1. 중력분 + 설탕1\n2. 달걀노른자 + 설탕2\n3. 우유에 바닐라빈 넣고 끓기 직전 불끄고 버터넣기. 70도까지 식히기\n4. 2에 3 넣은 후 1에 섞기\n5. 다크럼 섞고 24시간 숙성\n6. 반죽 꺼내서 찬기 제거, 틀 버터칠 후 냉장고\n7. 210도 예열, 200도 15분, 180도 45분"
+      ],
+      "bake_log": []
+    },
+    {
+      "recipe_name": "초코마들렌",
+      "date_created": "2024-05-04 06:48",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "버터",
+          "unit": "g",
+          "amount": "85"
+        },
+        {
+          "name": "달걀",
+          "unit": "g",
+          "amount": "77"
+        },
+        {
+          "name": "황설탕",
+          "unit": "g",
+          "amount": "63"
+        },
+        {
+          "name": "물엿 ",
+          "unit": "g",
+          "amount": "10"
+        },
+        {
+          "name": "박력분",
           "unit": "g",
           "amount": "50"
         },
         {
-          "name": "flour",
+          "name": "아몬드가루",
           "unit": "g",
-          "amount": "100"
+          "amount": "12"
+        },
+        {
+          "name": "코코아파우더",
+          "unit": "g",
+          "amount": "12"
+        },
+        {
+          "name": "베이킹파우더",
+          "unit": "g",
+          "amount": "2.5"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "1"
+        },
+        {
+          "name": "다크커버춰",
+          "unit": "g",
+          "amount": "25"
         }
       ],
       "how_to": [
-        "1. add water \n2. add heat \n3. 굽기"
+        "달걀 설탕 가루 버터\n180도 12분"
       ],
       "bake_log": [
-
+        {
+          "name": " ",
+          "score": 5,
+          "image_url": "",
+          "date": "",
+          "note": "great"
+        }
       ]
     }
   ]
