@@ -1,5 +1,6 @@
 {
   "schema_version": 1,
+  "app_version": "0.5.0",
   "recipes": [
     {
       "recipe_name": "사워도우",
@@ -461,6 +462,140 @@
           "note": "great"
         }
       ]
+    },
+    {
+      "recipe_name": "나가사키 카스테라",
+      "date_created": "2025-03-07 10: 07",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "전란",
+          "unit": "g",
+          "amount": "180"
+        },
+        {
+          "name": "노른자",
+          "unit": "개",
+          "amount": "2"
+        },
+        {
+          "name": "강력분",
+          "unit": "g",
+          "amount": "88"
+        },
+        {
+          "name": "설탕",
+          "unit": "g",
+          "amount": "120"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "1"
+        },
+        {
+          "name": "물엿",
+          "unit": "g",
+          "amount": "14"
+        },
+        {
+          "name": "쿠앵트로",
+          "unit": "g",
+          "amount": "10"
+        },
+        {
+          "name": "버터",
+          "unit": "g",
+          "amount": "30"
+        },
+        {
+          "name": "우유",
+          "unit": "g",
+          "amount": "20"
+        }
+      ],
+      "how_to": [
+        "사전 준비: 유산지 틀에 맞게 자르기, 우유 버터 녹이기\n\n1. 달걀, 설탕, 물엿 중탕 45도 \n2. 휘핑 (약 5분. 자국 3초 남는 정도)\n3. 술 넣고\n4. 체친 강력분 넣고\n5. 녹여둔 우유, 버터에 희생반죽 넣고 본반죽에 섞기\n6. 틀에 붓고 꼬지로 거품 정리\n7. 180도 20분, 호일 덮고 160도 35분"
+      ],
+      "bake_log": [
+        {
+          "name": "나가사키 카스테라 #1",
+          "score": 5,
+          "image_url": "",
+          "date": "2025-03-09 08: 14",
+          "note": "하루 지난 뒤 먹어보니 그래도 덜 촉촉하고 많이 달다"
+        },
+        {
+          "name": "나가사키 카스테라 #2",
+          "score": 5,
+          "image_url": "",
+          "date": "2025-07-20 21: 04",
+          "note": ""
+        }
+      ],
+      "is_favorite": false
+    },
+    {
+      "recipe_name": "그래놀라",
+      "date_created": "2025-06-14 15: 46",
+      "date_modified": "",
+      "ingredients": [
+        {
+          "name": "오트밀",
+          "unit": "g",
+          "amount": "150"
+        },
+        {
+          "name": "견과류",
+          "unit": "g",
+          "amount": "150"
+        },
+        {
+          "name": "시나몬",
+          "unit": "g",
+          "amount": "2"
+        },
+        {
+          "name": "메이플시럽 꿀",
+          "unit": "g",
+          "amount": "60"
+        },
+        {
+          "name": "설탕",
+          "unit": "g",
+          "amount": "40"
+        },
+        {
+          "name": "올리브오일",
+          "unit": "g",
+          "amount": "50"
+        },
+        {
+          "name": "소금",
+          "unit": "g",
+          "amount": "3"
+        }
+      ],
+      "how_to": [
+        "1. 전부 섞기\n2. 130도 15분씩 3번 굽기\n3. 건과 넣는다면 마지막 5분 전에"
+      ],
+      "bake_log": [
+        {
+          "name": "그래놀라 #1",
+          "score": 5,
+          "image_url": "/data/user/0/com.luna.bakinglog/app_flutter/baking_images/그래놀라 #1_1752994096385_0.jpg,/data/user/0/com.luna.bakinglog/app_flutter/baking_images/그래놀라 #1_1752994096388_1.jpg",
+          "date": "2025-06-15 07: 34",
+          "note": "낮은 온도에서 했어야 했다!"
+        },
+        {
+          "name": "그래놀라 #2",
+          "score": 5,
+          "image_url": "",
+          "date": "2025-07-20 15: 39",
+          "note": ""
+        }
+      ],
+      "is_favorite": false
     }
   ]
 }
